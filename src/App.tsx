@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Collapse } from "reactstrap";
+import { createContext, useContextSelector } from "use-context-selector";
 
-function App() {
+import "./assets/bootstrap.css";
+import useApp from "./hooks/useApp";
+import * as styled from "./App.styles";
+import { Confirm, Header, TopicEditor } from "./components";
+
+export type AppContextType = ReturnType<typeof useApp>;
+
+const AppContext = createContext<AppContextType>({} as AppContextType);
+
+export default function App() {
+  const state = useApp();
+  const { filteredTopics } = state;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={state}>
+      <styled.App>
+        {filteredTopics.map(function mapper(topic, i, all) {
+          return (
+            <styled.TopicContainer key={topic.id}>
+              <Header topic={topic} all={all} index={i} />
+              <Collapse isOpen={topic.expanded || topic.opened}>
+                <styled.Body>
+                  {topic.description && (
+                    <styled.Desc data-hasbottom={!!topic.children.length}>
+                      {topic.description}
+                    </styled.Desc>
+                  )}
+                  {topic.children.map(mapper)}
+                </styled.Body>
+              </Collapse>
+            </styled.TopicContainer>
+          );
+        })}
+      </styled.App>
+
+      <TopicEditor />
+      <Confirm />
+    </AppContext.Provider>
   );
 }
 
-export default App;
+export function useAppCtx<T>(selector: (ctx: AppContextType) => T) {
+  return useContextSelector(AppContext, selector);
+}
