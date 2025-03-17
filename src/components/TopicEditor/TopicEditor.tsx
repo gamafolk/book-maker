@@ -18,10 +18,10 @@ import useTopicEditor from "./TopicEditor.hook";
 export default function TopicEditor() {
   const {
     name,
-    opened,
     nameRef,
     nameError,
     description,
+    selectedTopic,
     setName,
     handleCancel,
     setDescription,
@@ -29,10 +29,12 @@ export default function TopicEditor() {
   } = useTopicEditor();
 
   return (
-    <Modal isOpen={opened} size="md">
+    <Modal isOpen={!!selectedTopic} size="md">
       <ModalHeader>
         <Edit size={20} />
-        <styled.Header>Editar tópico</styled.Header>
+        <styled.Header>
+          {selectedTopic?.isNew ? "Criar tópico" : "Editar tópico"}
+        </styled.Header>
         <X className="custom-btn-close" size={20} onClick={handleCancel} />
       </ModalHeader>
       <ModalBody>

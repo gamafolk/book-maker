@@ -6,12 +6,12 @@ import { useAppCtx } from "../../App";
 import * as styled from "./Confirm.styles";
 
 export interface ConfirmProps {
-  hideOk?: string;
   okText?: string;
+  hideOk?: boolean;
   title: ReactNode;
   content: ReactNode;
   cancelText?: string;
-  hideCancel?: string;
+  hideCancel?: boolean;
   callback?: (ok: boolean) => void;
 }
 
@@ -33,7 +33,7 @@ export default function Confirm() {
       <ModalBody>{config?.content}</ModalBody>
       {(!config?.hideOk || !config?.hideCancel) && (
         <ModalFooter>
-          {!config?.hideOk && (
+          {!config?.hideCancel && (
             <Button
               outline
               size="sm"
@@ -43,7 +43,7 @@ export default function Confirm() {
               {config?.cancelText ?? "Cancelar"}
             </Button>
           )}
-          {!config?.hideCancel && (
+          {!config?.hideOk && (
             <Button
               size="sm"
               color="info"

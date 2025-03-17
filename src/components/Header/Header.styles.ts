@@ -47,16 +47,6 @@ export const Controls = styled.div`
   align-items: center;
   justify-content: center;
 
-  .btn-menu-drpdn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    svg {
-      margin-right: 16px;
-    }
-  }
-
   .topics-header:not(:hover) &:not([data-meuopened="true"]) {
     display: none;
   }

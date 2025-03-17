@@ -66,10 +66,10 @@ export default function useTopicEditor() {
 
   return {
     name,
+    nameRef,
     nameError,
     description,
-    opened: !!selectedTopic,
-    nameRef,
+    selectedTopic,
     setName,
     handleCancel,
     setDescription,
