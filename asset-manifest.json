@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/book-maker/static/css/main.b4c415b1.css",
+    "main.js": "/book-maker/static/js/main.8f203ae7.js",
+    "index.html": "/book-maker/index.html",
+    "main.b4c415b1.css.map": "/book-maker/static/css/main.b4c415b1.css.map",
+    "main.8f203ae7.js.map": "/book-maker/static/js/main.8f203ae7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4c415b1.css",
+    "static/js/main.8f203ae7.js"
+  ]
+}
