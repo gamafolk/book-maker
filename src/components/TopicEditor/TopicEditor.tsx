@@ -50,7 +50,7 @@ export default function TopicEditor() {
               value={name}
               innerRef={nameRef}
               invalid={nameError}
-              placeholder="Defina um nome ara o tópico"
+              placeholder="Defina um nome para o tópico"
               onChange={(e) => setName(e.target.value)}
             />
             <FormFeedback>É necessário fornecer um nome</FormFeedback>
