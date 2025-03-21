@@ -4,6 +4,11 @@
 	http://jedwatson.github.io/classnames
 */
 
+/*!
+ * mustache.js - Logic-less {{mustache}} templates with JavaScript
+ * http://github.com/janl/mustache.js
+ */
+
 /**
  * @license React
  * react-dom-client.production.js

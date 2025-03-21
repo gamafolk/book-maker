@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/book-maker/static/css/main.b4c415b1.css",
-    "main.js": "/book-maker/static/js/main.2d6f2e09.js",
+    "main.css": "/book-maker/static/css/main.bdc2b9c2.css",
+    "main.js": "/book-maker/static/js/main.c1e4f955.js",
+    "static/media/USA.svg": "/book-maker/static/media/USA.00caa7dd268069425b3ea7f5a5cd3eff.svg",
+    "static/media/BRAZIL.svg": "/book-maker/static/media/BRAZIL.2b251a774687ad5ec0b021f56797a09e.svg",
     "index.html": "/book-maker/index.html",
-    "main.b4c415b1.css.map": "/book-maker/static/css/main.b4c415b1.css.map",
-    "main.2d6f2e09.js.map": "/book-maker/static/js/main.2d6f2e09.js.map"
+    "main.bdc2b9c2.css.map": "/book-maker/static/css/main.bdc2b9c2.css.map",
+    "main.c1e4f955.js.map": "/book-maker/static/js/main.c1e4f955.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4c415b1.css",
-    "static/js/main.2d6f2e09.js"
+    "static/css/main.bdc2b9c2.css",
+    "static/js/main.c1e4f955.js"
   ]
 }
