@@ -54,5 +54,11 @@ export default function useMenuBar() {
     return [all, done];
   }, [topics]);
 
-  return { results, handleClear, importFile, exportTopics };
+  return {
+    results,
+    hasTopics: !!topics.length,
+    handleClear,
+    importFile,
+    exportTopics,
+  };
 }

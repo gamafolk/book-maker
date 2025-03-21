@@ -32,5 +32,8 @@
   "gotIt": "Entendi",
   "invalidFileMessage": "O arquivo selecionado é inválido",
   "noName": "Sem nome",
-  "manage": "Gerenciar"
+  "manage": "Gerenciar",
+  "noTopicsMessage1": "Você ainda não tem tópicos criados",
+  "noTopicsMessage2": "Use  os botões abaixo para criar novos ou importar de um arquivo.",
+  "happyEditing": "Feliz edição!"
 }

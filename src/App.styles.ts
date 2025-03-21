@@ -93,13 +93,23 @@ export const Empty = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
 
   > h1 {
     font-size: 21px;
+    margin-bottom: 16px;
+  }
+
+  > span {
+    text-align: center;
+    max-width: 500px;
     margin-bottom: 24px;
+  }
+
+  > svg {
+    margin-bottom: 8px;
   }
 
   > div {
@@ -107,6 +117,7 @@ export const Empty = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 
     > button {

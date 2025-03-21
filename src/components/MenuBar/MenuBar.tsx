@@ -25,7 +25,8 @@ export default function MenuBar() {
   const t = useTranslation();
   const setLang = useI18nContext((ctx) => ctx.setLang);
   const lang = useI18nContext((ctx) => ctx.lang);
-  const { results, handleClear, importFile, exportTopics } = useMenuBar();
+  const { results, hasTopics, handleClear, importFile, exportTopics } =
+    useMenuBar();
 
   return (
     <styled.MenuBar
@@ -78,7 +79,11 @@ export default function MenuBar() {
               {t("manage")}
             </DropdownItem>
 
-            <DropdownItem className="btn-menu-drpdn" onClick={handleClear}>
+            <DropdownItem
+              onClick={handleClear}
+              disabled={!hasTopics}
+              className="btn-menu-drpdn"
+            >
               <Trash2 size={16} />
               <span>{t("deleteAllTheTopics")}</span>
             </DropdownItem>
@@ -86,16 +91,22 @@ export default function MenuBar() {
               <HardDriveUpload size={16} />
               <span>{t("importFromFile")}</span>
             </DropdownItem>
-            <DropdownItem className="btn-menu-drpdn" onClick={exportTopics}>
+            <DropdownItem
+              disabled={!hasTopics}
+              onClick={exportTopics}
+              className="btn-menu-drpdn"
+            >
               <HardDriveDownload size={16} />
               <span>{t("downloadTopics")}</span>
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
       </Nav>
-      <NavbarText className="text-light">
-        {results[1]} / {results[0]}
-      </NavbarText>
+      {!!results[0] && (
+        <NavbarText className="text-light">
+          {results[1]} / {results[0]}
+        </NavbarText>
+      )}
     </styled.MenuBar>
   );
 }

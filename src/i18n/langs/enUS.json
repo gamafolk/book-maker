@@ -32,5 +32,8 @@
   "gotIt": "I got it",
   "invalidFileMessage": "The selected file is invalid",
   "noName": "No name",
-  "manage": "Manage"
+  "manage": "Manage",
+  "noTopicsMessage1": "You don't have any topics created yet",
+  "noTopicsMessage2": "Use the buttons below to create new ones or import from a file.",
+  "happyEditing": "Happy editing!"
 }

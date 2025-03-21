@@ -1,5 +1,5 @@
 import { Button, Collapse } from "reactstrap";
-import { ArrowUpFromLine, Plus } from "lucide-react";
+import { ArrowUpFromLine, ListTree, Plus } from "lucide-react";
 import { createContext, useContextSelector } from "use-context-selector";
 
 import "./assets/bootstrap.css";
@@ -42,20 +42,27 @@ export default function App() {
 
           {!filteredTopics.length && (
             <styled.Empty>
+              <ListTree size={45} />
               <h1>{t("noTopics")}</h1>
+              <span>
+                {t("noTopicsMessage1")}
+                <br />
+                {t("noTopicsMessage2")}
+                <br />
+                {t("happyEditing")}
+              </span>
               <div>
-                <Button outline size="sm" color="info" onClick={importFile}>
-                  <ArrowUpFromLine size={14} />
-                  {t("import")}
-                </Button>
                 <Button
-                  outline
                   size="sm"
                   color="primary"
                   onClick={() => handleAddTopic(topics)}
                 >
                   <Plus size={16} />
                   {t("createANewOne")}
+                </Button>
+                <Button size="sm" color="secondary" onClick={importFile}>
+                  <ArrowUpFromLine size={14} />
+                  {t("import")}
                 </Button>
               </div>
             </styled.Empty>
