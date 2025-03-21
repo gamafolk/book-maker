@@ -14,8 +14,10 @@ import {
 
 import * as styled from "./TopicEditor.styles";
 import useTopicEditor from "./TopicEditor.hook";
+import { useTranslation } from "../../i18n/I18nProvider";
 
 export default function TopicEditor() {
+  const t = useTranslation();
   const {
     name,
     nameRef,
@@ -33,14 +35,14 @@ export default function TopicEditor() {
       <ModalHeader>
         <Edit size={20} />
         <styled.Header>
-          {selectedTopic?.isNew ? "Criar tópico" : "Editar tópico"}
+          {selectedTopic?.isNew ? t("createTopic") : t("editTopic")}
         </styled.Header>
         <X className="custom-btn-close" size={20} onClick={handleCancel} />
       </ModalHeader>
       <ModalBody>
         <Form>
           <FormGroup>
-            <Label for="name">Nome</Label>
+            <Label for="name">{t("name")}</Label>
             <Input
               required
               id="name"
@@ -50,31 +52,31 @@ export default function TopicEditor() {
               value={name}
               innerRef={nameRef}
               invalid={nameError}
-              placeholder="Defina um nome para o tópico"
+              placeholder={t("namePlaceholder")}
               onChange={(e) => setName(e.target.value)}
             />
-            <FormFeedback>É necessário fornecer um nome</FormFeedback>
+            <FormFeedback>{t("nameRequireMessage")}</FormFeedback>
           </FormGroup>
           <FormGroup>
-            <Label for="description">Descrição</Label>
+            <Label for="description">{t("description")}</Label>
             <Input
               bsSize="sm"
               type="textarea"
               id="description"
               name="description"
               value={description}
-              placeholder="Defina uma decrição para o tópico"
+              placeholder={t("descriptionPlaceholder")}
               onChange={(e) => setDescription(e.target.value)}
             />
           </FormGroup>
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button size="sm" outline color="danger" onClick={handleCancel}>
-          Cancelar
+        <Button size="sm" color="danger" onClick={handleCancel}>
+          {t("cancel")}
         </Button>
-        <Button size="sm" outline color="info" onClick={handleTopicSave}>
-          Salvar
+        <Button size="sm" color="info" onClick={handleTopicSave}>
+          {t("save")}
         </Button>
       </ModalFooter>
     </Modal>

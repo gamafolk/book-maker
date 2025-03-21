@@ -3,8 +3,10 @@ import { Topic } from "../App.types";
 import { getId } from "../App.constants";
 import { ConfirmProps } from "../components/Confirm/Confirm";
 import { isDataValid } from "../App.utils";
+import { useTranslation } from "../i18n/I18nProvider";
 
 export default function useApp() {
+  const t = useTranslation();
   const [confirmConfig, setConfirmConfig] = useState<ConfirmProps>();
   const [selectedTopic, selectTopic] = useState<Topic>();
   const [topics, setTopics] = useState<Topic[]>([]);
@@ -63,17 +65,12 @@ export default function useApp() {
   const importFile = useCallback(async () => {
     if (topics.length) {
       const ok = await confirm({
-        title: "Importar tópicos",
+        okText: t("import"),
+        cancelText: t("cancel"),
+        title: t("importTopics"),
         content: (
-          <>
-            Se optar por importar tópicos de um arquivo voê perderá os tópicos
-            que já editou
-            <br />
-            Tem certeza de que deseja continuar?
-          </>
+          <span dangerouslySetInnerHTML={{ __html: t("importMessage") }} />
         ),
-        okText: "Importar",
-        cancelText: "Cancelar",
       });
 
       if (!ok) return;
@@ -97,10 +94,10 @@ export default function useApp() {
             setTopics(obj);
           } else {
             confirm({
-              title: "Erro",
+              title: t("error"),
               hideCancel: true,
-              okText: "Entendi",
-              content: "O arquivo selecionado é inválido",
+              okText: t("gotIt"),
+              content: t("invalidFileMessage"),
             });
           }
         } catch (error) {
@@ -112,7 +109,7 @@ export default function useApp() {
     };
 
     input.click();
-  }, [topics.length, confirm]);
+  }, [topics.length, confirm, t]);
 
   useEffect(() => {
     if (topics.length) {

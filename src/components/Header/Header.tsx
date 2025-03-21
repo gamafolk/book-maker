@@ -23,6 +23,7 @@ import * as styled from "./Header.styles";
 import { Topic } from "../../App.types";
 import { useAppCtx } from "../../App";
 import useHeader from "./Header.hook";
+import { useTranslation } from "../../i18n/I18nProvider";
 
 export interface HeaderProps {
   topic: Topic;
@@ -31,6 +32,7 @@ export interface HeaderProps {
 }
 
 export default function Header({ topic, all, index }: HeaderProps) {
+  const t = useTranslation();
   const {
     openMenu,
     handleMove,
@@ -63,7 +65,7 @@ export default function Header({ topic, all, index }: HeaderProps) {
         data-openable={!!topic.description?.trim() || topic}
         onClick={() => toggleOpen(topic)}
       >
-        {topic.name?.trim() ? topic.name?.trim() : "Sem nome"}
+        {topic.name?.trim() ? topic.name?.trim() : t("noName")}
       </styled.TopicTitle>
 
       <styled.Controls data-meuopened={openMenu}>
@@ -121,7 +123,7 @@ export default function Header({ topic, all, index }: HeaderProps) {
               onClick={() => handleMove(all, index, "up")}
             >
               <ArrowUp size={16} />
-              <span>Mover para cima</span>
+              <span>{t("moveUp")}</span>
             </DropdownItem>
             <DropdownItem
               className="btn-menu-drpdn"
@@ -129,7 +131,7 @@ export default function Header({ topic, all, index }: HeaderProps) {
               onClick={() => handleMove(all, index, "down")}
             >
               <ArrowDown size={16} />
-              <span>Mover para baixo</span>
+              <span>{t("moveDown")}</span>
             </DropdownItem>
 
             <DropdownItem
@@ -138,15 +140,15 @@ export default function Header({ topic, all, index }: HeaderProps) {
             >
               {!topic.expanded && <Expand size={16} />}
               {topic.expanded && <Shrink size={16} />}
-              {!topic.expanded && <span>Expandir</span>}
-              {topic.expanded && <span>Contrair</span>}
+              {!topic.expanded && <span>{t("expand")}</span>}
+              {topic.expanded && <span>{t("contract")}</span>}
             </DropdownItem>
             <DropdownItem
               className="btn-menu-drpdn"
               onClick={() => handleDeleteTopic(topic, all, index)}
             >
               <Trash size={16} />
-              <span>Apagar</span>
+              <span>{t("delete")}</span>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

@@ -1,8 +1,10 @@
 import { useCallback, useState } from "react";
 import { useAppCtx } from "../../App";
 import { Topic } from "../../App.types";
+import { useTranslation } from "../../i18n/I18nProvider";
 
 export default function useHeader() {
+  const t = useTranslation();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const confirm = useAppCtx((ctx) => ctx.confirm);
   const selectTopic = useAppCtx((ctx) => ctx.selectTopic);
@@ -56,20 +58,17 @@ export default function useHeader() {
       });
 
       const ok = await confirm({
-        okText: "Apagar",
-        title: "Apagar tópico",
-        cancelText: "Cancelar",
-        content:
-          count > 0 ? (
-            <>
-              Ao apagar este tópico você irá apagar outro(s) {count}{" "}
-              subtópico(s).
-              <br />
-              Tem certeza de que deseja continuar?
-            </>
-          ) : (
-            "Deseja realmente apagar este tópico?"
-          ),
+        okText: t("delete"),
+        title: t("deleteTopic"),
+        cancelText: t("cancel"),
+        content: (
+          <span
+            dangerouslySetInnerHTML={{
+              __html:
+                count > 0 ? t("deleteTopic1", { count }) : t("deleteTopic2"),
+            }}
+          />
+        ),
       });
 
       if (ok) {
@@ -77,7 +76,7 @@ export default function useHeader() {
         setTopics((curr) => [...curr]);
       }
     },
-    [confirm, setTopics]
+    [confirm, setTopics, t]
   );
 
   const handleMove = useCallback(

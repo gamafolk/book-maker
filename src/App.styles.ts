@@ -10,7 +10,9 @@ export const App = styled.div`
     height: 100%;
     display: flex;
     overflow: auto;
+    overflow: auto;
     cursor: default;
+    flex-direction: column;
     box-sizing: border-box;
     align-items: flex-start;
     justify-content: flex-start;
@@ -33,8 +35,32 @@ export const App = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 40px 16px;
   flex-direction: column;
+
+  > div {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    overflow: auto;
+    max-height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 0px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+  }
 `;
 
 export const TopicContainer = styled.div`

@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import { useAppCtx } from "../../App";
 import * as styled from "./Confirm.styles";
+import { useTranslation } from "../../i18n/I18nProvider";
 
 export interface ConfirmProps {
   okText?: string;
@@ -16,6 +17,7 @@ export interface ConfirmProps {
 }
 
 export default function Confirm() {
+  const t = useTranslation();
   const config = useAppCtx((ctx) => ctx.confirmConfig);
 
   return (
@@ -40,7 +42,7 @@ export default function Confirm() {
               color="danger"
               onClick={() => config?.callback(false)}
             >
-              {config?.cancelText ?? "Cancelar"}
+              {config?.cancelText ?? t("cancel")}
             </Button>
           )}
           {!config?.hideOk && (
@@ -49,7 +51,7 @@ export default function Confirm() {
               color="info"
               onClick={() => config?.callback(true)}
             >
-              {config?.okText ?? "Ok"}
+              {config?.okText ?? t("ok")}
             </Button>
           )}
         </ModalFooter>
