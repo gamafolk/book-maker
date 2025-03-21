@@ -10,6 +10,7 @@ import {
   ArrowDown,
   GitBranchPlus,
   SquareCheck,
+  ChevronRight,
 } from "lucide-react";
 import {
   Button,
@@ -48,6 +49,11 @@ export default function Header({ topic, all, index }: HeaderProps) {
 
   return (
     <styled.Header data-menuopen={openMenu} className="topics-header">
+      <ChevronRight
+        className="open-indicator"
+        data-opened={topic.opened}
+        data-disabled={!topic.children.length && !topic.description.trim()}
+      />
       <Button
         outline
         size="sm"
@@ -62,8 +68,9 @@ export default function Header({ topic, all, index }: HeaderProps) {
 
       <styled.TopicTitle
         id={topic.id}
-        data-openable={!!topic.description?.trim() || topic}
         onClick={() => toggleOpen(topic)}
+        data-openable={!!topic.description?.trim() || topic}
+        data-disabled={!topic.children.length && !topic.description.trim()}
       >
         {topic.name?.trim() ? topic.name?.trim() : t("noName")}
       </styled.TopicTitle>

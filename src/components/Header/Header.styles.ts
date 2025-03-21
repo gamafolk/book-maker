@@ -8,6 +8,28 @@ export const Header = styled.div`
   justify-content: flex-start;
   padding: 0 16px;
 
+  > svg[data-disabled="true"].open-indicator {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  > svg[data-opened="true"].open-indicator {
+    transform: rotate(90deg);
+    transition: transform 200ms ease-in-out;
+  }
+
+  > svg.open-indicator {
+    --open-indicator-size: 16px;
+
+    width: var(--open-indicator-size);
+    height: var(--open-indicator-size);
+    min-width: var(--open-indicator-size);
+    max-width: var(--open-indicator-size);
+    min-height: var(--open-indicator-size);
+    max-height: var(--open-indicator-size);
+    transition: transform 200ms ease-in-out;
+  }
+
   button.btn-menu-control {
     --custom-btn-size: 24px;
 
@@ -37,6 +59,10 @@ export const TopicTitle = styled.span`
   width: 100%;
   padding: 8px 0;
   cursor: pointer;
+
+  &[data-disabled="true"] {
+    pointer-events: none;
+  }
 `;
 
 export const Controls = styled.div`
