@@ -2,14 +2,18 @@ import styled from "styled-components";
 
 export const Header = styled.div`
   display: flex;
+  padding: 0 16px;
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 16px;
+
+  div.topics-body:has(> div > &:hover) {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+  }
 
   > svg[data-disabled="true"].open-indicator {
-    opacity: 0;
+    opacity: 0.3;
     pointer-events: none;
   }
 
@@ -41,6 +45,14 @@ export const Header = styled.div`
     max-width: var(--custom-btn-size);
     min-height: var(--custom-btn-size);
     max-height: var(--custom-btn-size);
+
+    > svg[data-checked="true"] {
+      color: rgba(var(--bs-success-rgb)) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
   }
 
   &:hover,

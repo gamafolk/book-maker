@@ -20,11 +20,36 @@ export default function useHeader() {
   );
 
   const handleCheck = useCallback(
-    (topic: Topic) => {
-      topic.checked = !topic.checked;
-      setTopics((curr) => [...curr]);
+    async (topic: Topic) => {
+      let count = 0;
+
+      topic.children.forEach(function eacher(t) {
+        count += Number(!t.checked);
+        t.children.forEach(eacher);
+      });
+
+      if (!count || topic.checked) {
+        topic.checked = !topic.checked;
+        setTopics((curr) => [...curr]);
+      } else {
+        const ok = await confirm({
+          okText: t("finish"),
+          title: t("finishTopic"),
+          cancelText: t("cancel"),
+          content: t("finishAllMessage", { count }),
+        });
+
+        if (ok) {
+          topic.checked = true;
+          topic.children.forEach(function eacher(t) {
+            t.checked = true;
+            t.children.forEach(eacher);
+            setTopics((curr) => [...curr]);
+          });
+        }
+      }
     },
-    [setTopics]
+    [confirm, setTopics, t]
   );
 
   const handleExpand = useCallback(

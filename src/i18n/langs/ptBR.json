@@ -35,5 +35,8 @@
   "manage": "Gerenciar",
   "noTopicsMessage1": "Você ainda não tem tópicos criados",
   "noTopicsMessage2": "Use  os botões abaixo para criar novos ou importar de um arquivo.",
-  "happyEditing": "Feliz edição!"
+  "happyEditing": "Feliz edição!",
+  "finish": "Finalizar",
+  "finishTopic": "Finalizar tópico",
+  "finishAllMessage": "Este tópico tem {{count}} subtópico(s) sem finalizar. Deseja finalizar todos estes itens?"
 }

@@ -67,11 +67,12 @@ export const TopicContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Body = styled.div`
   display: flex;
-  margin-left: 20px;
+  margin-left: 24px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;

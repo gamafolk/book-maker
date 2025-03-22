@@ -24,7 +24,7 @@ export default function App() {
               <styled.TopicContainer key={topic.id}>
                 <Header topic={topic} all={all} index={i} />
                 <Collapse isOpen={topic.expanded || topic.opened}>
-                  <styled.Body>
+                  <styled.Body className="topics-body">
                     {topic.description && (
                       <styled.Desc data-hasbottom={!!topic.children.length}>
                         {topic.description}

@@ -48,12 +48,17 @@ export default function Header({ topic, all, index }: HeaderProps) {
   const handleAddTopic = useAppCtx((ctx) => ctx.handleAddTopic);
 
   return (
-    <styled.Header data-menuopen={openMenu} className="topics-header">
+    <styled.Header
+      data-opened={topic.opened}
+      data-menuopen={openMenu}
+      className="topics-header"
+    >
       <ChevronRight
         className="open-indicator"
         data-opened={topic.opened}
         data-disabled={!topic.children.length && !topic.description.trim()}
       />
+
       <Button
         outline
         size="sm"
@@ -63,7 +68,9 @@ export default function Header({ topic, all, index }: HeaderProps) {
         style={{ border: "none", marginRight: 8 }}
       >
         {!topic.checked && <Square size={18} />}
-        {topic.checked && <SquareCheck size={18} color="#1de9b6" />}
+        {topic.checked && (
+          <SquareCheck size={18} data-checked={topic.checked} />
+        )}
       </Button>
 
       <styled.TopicTitle
